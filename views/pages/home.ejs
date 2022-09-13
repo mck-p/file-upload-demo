@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <%- include('../partials/head'); %>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-size: 100%;
+        background: #1c1c1c;
+        color: #efefef;
+      }
+
+      #frame {
+        width: 100%;
+        height: 60vh;
+        background: rgba(33, 33, 33, 0.35);
+        padding: 1rem;
+        max-width: 1080px;
+        margin: 0 auto;
+        margin-top: 5rem;
+        border-radius: 4.5px;
+      }
+
+      #frame-target {
+        width: 100%;
+        height: 100%;
+      }
+
+      form {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        margin-top: 5rem;
+      }
+
+      .input_group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input_group label {
+        color: #efefef;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id='frame'>
+      <div id="frame-target"></div>
+    </div>
+    <form enctype='multipart/form-data' action="/functions/upload-png" method="POST">
+      <div class="input_group">
+        <label class="button" for="file">
+          Upload Photo
+        </label>
+        <input id="file" name="file" type="file" class="show-for-sr" accept=".png,.jpeg,.jpg" required />
+      </div>
+
+      <button type="submit" class="submit button">
+        Analyze
+      </button>
+    </form>
+  </body>
+
+</html>
+<%- include('../partials/footer'); %>
+<script>
+  window.addEventListener('load', () => {
+    const frame = document.getElementById('frame-target');
+    const file = document.getElementById('file');
+
+    file.addEventListener('change', function () {
+      // access the uploaded image file and generate URL
+      const image = file.files[0];
+      const bgUrl = URL.createObjectURL(image);
+
+      // set background image of frame
+      frame.style.background = `url(${bgUrl}) center center no-repeat `;
+      frame.style.backgroundSize  = 'contain'
+
+    });
+  })
+</script>

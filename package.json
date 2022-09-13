@@ -1,0 +1,18 @@
+{
+  "name": "view-and-upload-png",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "dotenv-flow": "^3.2.0",
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "dev": "nodemon -r dotenv-flow/config app/server.js"
+  }
+}
