@@ -27,7 +27,7 @@ details
 # do not set or set to empty to be false
 SHOW_UPLOADED_IMAGE=
 # if the above is false, what file would
-# you like us to serve, based in public/uploads/<name>
+# you like us to serve, based in public/img/<name>
 HARDCODED_FILENAME=contours-big.png
 # what port do you want the system to listen on?
 PORT=5000

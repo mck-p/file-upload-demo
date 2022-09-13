@@ -19,18 +19,18 @@ const getFileNameById = async (id) => {
       for (const file of dirListing) {
         if (file.isFile) {
           if (file.name.indexOf(id) === 0) {
-            res(file.name);
+            res(`/uploads/${file.name}`);
           }
         }
       }
 
       rej(new Error("Cannot find value at that ID"));
     } else {
-      res(env.hardcodedFilename);
+      res(`/img/${env.hardcodedFilename}`);
     }
   });
 
-  return result.split("/").pop();
+  return result;
 };
 
 router
@@ -41,7 +41,7 @@ router
     const fileName = await getFileNameById(req.params.id);
 
     res.render("pages/analyze", {
-      imageUrl: `${env.urlBase}/uploads/${fileName}`,
+      imageUrl: `${env.urlBase}${fileName}`,
     });
   });
 
